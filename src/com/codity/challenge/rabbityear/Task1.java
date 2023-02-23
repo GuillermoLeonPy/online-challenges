@@ -12,6 +12,10 @@ package com.codity.challenge.rabbityear;
  * For example, given A = [3, 6, 4, 5] and B = [2, 6, 3, 5], if we rotate the table once, we would obtain B = [5, 2, 6, 3].
  * Find the minimum number of table rotations that need to be performed in order to satisfy every person.
  * 
+ * 
+ * https://app.codility.com/programmers/challenges/year_of_the_rabbit_2023/
+ * 
+ * 
  * @author test-user
  *
  */
