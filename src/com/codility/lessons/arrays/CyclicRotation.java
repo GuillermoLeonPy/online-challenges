@@ -4,7 +4,7 @@ public class CyclicRotation {
 
 	public int[] solution(int[] A, int K) {
 		
-		return processRecursiveMain(A, K);
+		return processRecursiveMain(A, K, SHIFT_RIGHT);
 		//return process(A, K);
 	}
 	
@@ -32,9 +32,13 @@ public class CyclicRotation {
 		return A;
 	}
 	
-	private int[] processRecursiveMain(int[] A, int K) {
+	private int[] processRecursiveMain(int[] A, int K, boolean shiftRight) {
+		if(A.length == 1)return A;
 		for(int i = 0; i < K; i++) {
-			processRecursive(A, 0, 0);
+			if(shiftRight)
+				processRecursive(A, 0, 0);
+			else
+				processRecursiveLeft(A, 0, A.length - 1);
 		}
 		return A;
 	}
@@ -43,21 +47,34 @@ public class CyclicRotation {
 		if(indexCounter == A.length - 1) {
 			A[0] = temp;
 		}else {
-			temp = A[indexCounter + 1];
-			A[indexCounter + 1] = A[indexCounter];
-			processRecursive(A, temp, indexCounter++);
+			int temp2 = A[indexCounter + 1];
+			A[indexCounter + 1] = (indexCounter == 0 ? A[indexCounter] : temp);
+			indexCounter++;
+			processRecursive(A, temp2, indexCounter);			
+		}
+	}
+	
+	private void processRecursiveLeft(int[] A, int temp, int indexCounter) {
+		if(indexCounter == 0) {
+			A[A.length - 1] = temp;
+		}else {
+			int temp2 = A[indexCounter - 1];
+			A[indexCounter - 1] = (indexCounter == A.length - 1 ? A[indexCounter] : temp);
+			indexCounter--;
+			processRecursiveLeft(A, temp2, indexCounter);			
 		}
 	}
 	
 	private static final int [] CONSTANT = {0,1,2,3,4,5,6,7,8,9};
 	//private static final int [] CONSTANT = {1000};
-	private static final int NUMBER_OF_TIMES_TO_SHIFT = 1;
+	private static final int NUMBER_OF_TIMES_TO_SHIFT = 3;
+	private static final boolean SHIFT_RIGHT = false;
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		CyclicRotation vCyclicRotation = new CyclicRotation();
 		System.out.println("\n original array: " + vCyclicRotation.getPrintableArray(CONSTANT) 
-		+ "\n right shifted array: " + vCyclicRotation.getPrintableArray(vCyclicRotation.process(CONSTANT, NUMBER_OF_TIMES_TO_SHIFT)));
+		+ "\n right shifted array: " + vCyclicRotation.getPrintableArray(vCyclicRotation.processRecursiveMain(CONSTANT, NUMBER_OF_TIMES_TO_SHIFT, SHIFT_RIGHT)));
 		
 	}
 	
