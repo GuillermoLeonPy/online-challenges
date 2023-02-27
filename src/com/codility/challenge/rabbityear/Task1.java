@@ -1,4 +1,4 @@
-package com.codity.challenge.rabbityear;
+package com.codility.challenge.rabbityear;
 /**
  * 
  * 

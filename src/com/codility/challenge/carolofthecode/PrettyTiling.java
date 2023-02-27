@@ -1,4 +1,4 @@
-package com.codity.challenge.carolofthecode;
+package com.codility.challenge.carolofthecode;
 
 
 import java.util.Arrays;

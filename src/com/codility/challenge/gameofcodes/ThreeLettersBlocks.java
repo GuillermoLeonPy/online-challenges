@@ -1,4 +1,4 @@
-package com.codity.challenge.gameofcodes;
+package com.codility.challenge.gameofcodes;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -92,32 +92,6 @@ public class ThreeLettersBlocks {
 		return sb.toString();
 	}	
 	
-	private boolean currentStringFormsAThreeLettersBlock___(String S) {		
-		char [] distinctCharacters = getDistinctCharacters(S);
-		//aabbba
-		
-		//aabbaa
-		//aaacbba
-		if(distinctCharacters.length <= 3) {
-			//0,1,5
-			//2,3,4
-			char[] S_charArray = S.toCharArray();
-			for(char character: distinctCharacters) {				
-				int [] positions = getCharacterPositionsInArray(character, S_charArray);
-				int positionDiff_greaterThan_one_counter = 0;
-				for(int i = 1; i < positions.length; i++) {
-					if(positions[i] - positions[i - 1] > 1) {
-						positionDiff_greaterThan_one_counter++;
-					}
-				}
-				if(positionDiff_greaterThan_one_counter > 1)
-					return false;
-			}	
-			return true;
-		}
-		return false;
-	}
-	
 	private boolean currentStringFormsAThreeLettersBlock(String S) {
 		//aabbaa
 		//aaacbba
@@ -131,27 +105,6 @@ public class ThreeLettersBlocks {
 			return false;
 		else
 			return true;
-	}
-	
-	private int[] getCharacterPositionsInArray(char character, char[] charArray) {
-		int numberOfTimesCharacterRepeats = getNumberOfTimesCharacterRepeats(character, charArray);
-		int [] positions = new int[numberOfTimesCharacterRepeats];
-		int positionsCounter = 0;
-		for(int i = 0; i < charArray.length; i++) {
-			if(charArray[i] == character) {
-				positions[positionsCounter++] = i;
-			}
-		}
-		return positions;
-	}
-	
-	private int getNumberOfTimesCharacterRepeats(char character,char[] S_charArray) {
-		int counter = 0;
-		for(char S_character: S_charArray) {
-			if(character == S_character)
-				counter++;
-		}
-		return counter;
 	}
 	
 	private char[] getNewDoNotProcessCharactersArrayByAddCharacter(char character, char[] characterArray) {
