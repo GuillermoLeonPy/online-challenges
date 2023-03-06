@@ -31,7 +31,15 @@ public class MinAvgTwoSlice {
 			sum[i + 1] = sum[i] + A[i];			
 		}
 		
-		
+		/*
+		 * https://codesays.com/2014/solution-to-min-avg-two-slice-by-codility/
+		 * 
+		 * https://github.com/Mickey0521/Codility/blob/master/MinAvgTwoSlice.java
+		 * 
+		 * https://github.com/peshrus/codility/blob/master/src/main/java/com/codility/lessons/lesson05/MinAvgTwoSlice.java
+		 * 
+		 * 
+		 * */
 		
 		
 		return 0;
